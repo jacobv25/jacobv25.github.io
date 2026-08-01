@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jacob Valenzuela — software engineer building with, and for, AI agents. Agentic systems, custom Claude Code skills, agent-native tooling, and delivery analytics.">
+  <title>Jacob Valenzuela — Software Engineer · Agentic AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▲</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="wrap">
+    <a class="brand" href="#top">jv<span class="accent">.</span></a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#practice">Practice</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero wrap">
+    <p class="kicker">Jacob Valenzuela · Software Engineer</p>
+    <h1>I build software <em>with</em> AI agents — and I build software <em>for</em> them.</h1>
+    <p class="lede">
+      Four years shipping mission-critical software on a 20-engineer team, and a daily practice of
+      agentic engineering: authoring Claude&nbsp;Code skills, designing agent-native codebases and CLIs,
+      orchestrating multi-agent workflows, and running autonomous sessions in sandboxed environments.
+      This site is the evidence.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="assets/Jacob_Valenzuela_Resume.pdf" download>Download Résumé (PDF)</a>
+      <a class="btn" href="mailto:devmail.jacob@gmail.com">devmail.jacob@gmail.com</a>
+    </div>
+    <dl class="stat-strip" aria-label="At a glance">
+      <div><dt>3</dt><dd>Claude Code skills authored<br>(~1,500 lines of spec)</dd></div>
+      <div><dt>88</dt><dd>research visualizations generated<br>by my own pipeline in 7 weeks</dd></div>
+      <div><dt>4</dt><dd>delivery channels built over one<br>tested core, agent-first monorepo</dd></div>
+      <div><dt>20</dt><dd>engineers mentored on testing<br>&amp; flow analytics at my day job</dd></div>
+    </dl>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="wrap">
+    <h2><span class="section-num">01</span> Agentic AI work</h2>
+    <p class="section-intro">
+      Selected projects, most of them born in my personal workspace. The common thread: treating the
+      agent as a first-class user of the system — giving it structured output, safe boundaries,
+      verification loops, and honest documentation. Code for private projects is available on request.
+    </p>
+
+    <div class="cards">
+
+      <article class="card featured">
+        <header>
+          <h3>visualize &amp; research-viz — a research-to-visualization pipeline, built as Claude Code skills</h3>
+          <p class="tags"><span>Skill authoring</span><span>Prompt engineering</span><span>Bash</span><span>HTML/CSS/JS</span></p>
+        </header>
+        <p>
+          A pair of custom skills I wrote that turn any substantial research answer into a self-contained,
+          interactive single-file HTML page — all CSS/JS/SVG inlined, no build step, renders offline.
+          <strong>research-viz</strong> chains a deep-research protocol (fan-out web searches, primary-source
+          fetches, adversarial verification, numbered citations) into <strong>visualize</strong>, which must
+          derive a fresh visual identity per topic: a design constraint baked into the skill so no two pages look alike.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Skill engineering, not skill usage:</strong> progressive-disclosure reference files (patterns, theming, design directions), a neutral starter template, and shell scaffolding scripts the agent invokes — including a retention script driven by a weekly cleanup routine.</li>
+            <li><strong>Production evidence:</strong> 88 generated artifacts over 7 weeks — research reports, engineering deep-dives, architecture explainers, business analysis.</li>
+            <li><strong>An engineering-evolution story:</strong> v1 scaffolded a full React + Vite app per run; I re-architected it to emit one dependency-free HTML file, because output you have to <em>host</em> is output you eventually have to clean up.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>matchbook — an agent-native CLI, plus an Android sensor to feed it</h3>
+          <p class="tags"><span>Go</span><span>SQLite · FTS5</span><span>Kotlin · Compose</span><span>Agent-native design</span></p>
+        </header>
+        <p>
+          A Go CLI (~2.2k lines, cobra + SQLite full-text search) that mirrors a messaging-app data export into a local
+          database and exposes compound, token-efficient commands (<code>needs-reply</code>, <code>stalled</code>,
+          <code>stats</code>) with <code>--json</code> on every read — wrapped in a SKILL.md so an agent can drive it
+          in natural language. A companion Android app uses a <code>NotificationListenerService</code> to stream
+          fresh message events to the CLI's ingest server, solving "the official export takes days."
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Judgment over capability:</strong> the obvious route was reverse-engineering a private API — a ToS violation. Instead the tool mirrors a proven architecture against the official on-disk export, and the Android sensor only reads notifications the OS already delivered to my own device.</li>
+            <li><strong>Agent-native by design:</strong> compound commands minimize agent turns; JSON output eliminates parsing guesswork; AI-assisted commands (<code>summarize</code>, <code>suggest</code>) are gated behind explicit flags and produce drafts for human review, never auto-replies.</li>
+            <li><strong>Tested:</strong> <code>go test</code> coverage on the export parser and store, including full-text search and idempotent re-ingest; all format assumptions isolated to one package.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>ose-vtt — a 16-path design exploration judged by an LLM panel</h3>
+          <p class="tags"><span>Multi-agent orchestration</span><span>LLM-as-judge</span><span>Agent-safety architecture</span></p>
+        </header>
+        <p>
+          Before writing any code for an AI-assisted virtual tabletop, I ran the design space through a
+          multi-agent process: 16 candidate designs generated across a 4×4 matrix (AI ambition × human authority),
+          each scored by three distinct judge personas (domain purist, software architect, product/UX), then
+          leaderboarded and synthesized — using <em>convergence across independent paths</em> as the signal.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Safety as data model:</strong> the winning architecture makes the AI <em>structurally</em> incapable of touching shared state — every agent action is a staged command requiring human commit, with no canonical setter exposed to the agent layer.</li>
+            <li><strong>"The LLM never produces a number":</strong> all dice, math, and rules resolution live in a deterministic engine; the agent narrates and proposes. Every result carries a provenance object (dice, seed, formula, rule cited).</li>
+            <li><strong>Output:</strong> a full design report with MVP scope, trade-offs, and a "validate first" list — the kind of artifact I'd want before funding a build.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>bella-workspace — designing a codebase <em>for</em> agents</h3>
+          <p class="tags"><span>TypeScript</span><span>npm workspaces</span><span>Hono · node:sqlite</span><span>Vitest</span><span>Context engineering</span></p>
+        </header>
+        <p>
+          A medication-reminder system deliberately built <strong>four ways</strong> — ntfy push, Web Push PWA,
+          email, and a calendar feed — over one shared, tested domain core, so the channels run side by side and
+          the winner is kept. Every app is the same shape (config / pure-function scheduler / Hono server), and
+          the whole monorepo is documented in layered CLAUDE.md files written for an agent to be productive in one read.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Context engineering as a discipline:</strong> root + per-app agent docs, an explicit "the duplication is the point — don't consolidate" guardrail, and conventions stated as typecheck-enforced rules an agent must match.</li>
+            <li><strong>Verification designed in:</strong> a documented 1-minute test knob so a reminder can be verified end-to-end without waiting for 8:00 PM, ready-to-run <code>curl</code>/<code>sqlite3</code> check commands, and a gotchas section for the traps I actually hit.</li>
+            <li><strong>Quality gate:</strong> work is gated on <code>npm run typecheck &amp;&amp; npm test</code> (22 passing tests), strict TS with no build step.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>Sandboxed autonomy — running a permissionless agent safely</h3>
+          <p class="tags"><span>Apple container</span><span>Docker</span><span>iptables · ipset · dnsmasq</span><span>Infra</span></p>
+        </header>
+        <p>
+          To run Claude Code fully autonomously (no permission prompts) without giving it my machine, I built a
+          sandbox: an isolated Linux microVM via Apple's <code>container</code> on Apple Silicon, with the project
+          bind-mounted read-write and everything else walled off behind a network egress allowlist.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>The interesting problem:</strong> a naive IP allowlist fails for CDN-fronted domains. My firewall runs dnsmasq locally — when the agent resolves an allowed domain, the freshly-resolved IP is added to an ipset that iptables permits. Robust to IP rotation, no broad CIDR grants. IPv6 is dropped and AAAA records stripped so nothing bypasses the IPv4 allowlist.</li>
+            <li><strong>Verified, not vibes:</strong> the README documents tested behavior — allowed domains reachable; example.com, google.com, and raw IPs blocked — plus honest caveats (required capabilities, fail-closed behavior, version compatibility).</li>
+            <li><strong>Why it matters:</strong> autonomous agents are only as trustworthy as the boundary you run them inside. I built the boundary.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>pno-check — an autonomous checker that hands work back to the agent</h3>
+          <p class="tags"><span>Node</span><span>Playwright</span><span>launchd</span><span>Automation</span></p>
+        </header>
+        <p>
+          A daily launchd job that drives headless Chrome through a government web portal to check whether a
+          filing window has opened, clicking through interstitial prompts and classifying the outcome. On
+          eligibility it sends a phone push whose message is literally "Open Claude Code and say 'file it'" —
+          the automation exists to hand a task back to an agent at exactly the right moment.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Self-monitoring:</strong> three consecutive failures trigger a "the daily check is failing — ask Claude to debug" notification pointing at its own directory.</li>
+            <li><strong>Self-terminating:</strong> success touches a sentinel file so it never fires twice, and the header comment documents its own teardown. Automation with a lifecycle, not a zombie cron job.</li>
+            <li><strong>Defensive scraping:</strong> reasons about rendered-vs-hidden DOM text to avoid false positives, and polls frames to find the embedded workflow iframe rather than assuming page structure.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>shmup-claude — research-grounded agentic UX (build plan)</h3>
+          <p class="tags"><span>Agentic UX research</span><span>Spec-mediated editing</span><span>Lua · LÖVE</span></p>
+        </header>
+        <p>
+          A design for a tool where you <em>describe</em> bullet-hell game patterns in natural language and watch
+          them appear on a live canvas. Seven core UX principles, each traced to a cited 2024–2026 HCI research
+          paper. The agent never generates engine code — it emits schema-validated patches against an
+          id-addressable spec, previewed as ghost renders with difficulty estimates before a human commits them.
+          A headless auto-playtester estimates dodge-ability so "make it more readable" gets a measurable answer.
+        </p>
+        <details>
+          <summary>Status</summary>
+          <ul>
+            <li>Archived after Milestone 1 (a partial Lua/LÖVE engine with seeded RNG, bullet, and pattern systems). The plan document is the artifact: it's my clearest statement of how humans should stay in control of generative tools — propose → preview → accept, never silent mutation.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>mark-msx — a corpus-to-skill pipeline</h3>
+          <p class="tags"><span>Skill authoring</span><span>Corpus distillation</span><span>Persona design</span></p>
+        </header>
+        <p>
+          I distilled ~136k words of transcripts from a game-design critic into a Claude Code skill with three
+          modes — critique in-voice, score against a neutral rubric, or apply the philosophy as design guidance —
+          with the doctrine, voice, and scorecard factored into separate reference files loaded on demand.
+          Includes an anti-bluffing rule: if the agent lacks firsthand knowledge of the subject, it must say so.
+        </p>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>AI-integration consulting — an agent-native business operation</h3>
+          <p class="tags"><span>Consulting</span><span>Custom skills &amp; subagents</span><span>Ops design</span></p>
+        </header>
+        <p>
+          An emerging consulting practice helping local small businesses (home-services trades, auto repair)
+          adopt AI — mostly by wiring up tools they already own. The operation itself is run as an agent-native
+          workspace: a thin operating constitution, custom skills for readiness assessments, subagents for
+          industry research, templated engagement pipelines, and hard confidentiality walls keeping client and
+          financial material out of anything an agent could leak into a repo.
+        </p>
+      </article>
+
+    </div>
+
+    <h3 class="subhead">Also in the workshop</h3>
+    <div class="cards minor">
+      <article class="card">
+        <h4>map-timeline-workspace</h4>
+        <p>A synced ArcGIS map ⇄ vis-timeline reference app at 10k–50k events through one Redux store, with a perf HUD and toggles that turn each best practice <em>off</em> so you can watch the cost appear. Cypress e2e + FPS/latency perf specs.</p>
+      </article>
+      <article class="card">
+        <h4>granularity-planner</h4>
+        <p>A space-time planner whose UI re-represents itself based on the temporal granularity you're working at — snap, map rendering, and editors all morph as you zoom from week to minute. Granularity is derived from the visible window, never a mode.</p>
+      </article>
+      <article class="card">
+        <h4>vis-timeline-sandbox</h4>
+        <p>One open-source bug (an invisible drag strip swallowing clicks), nine live-toggleable fixes with honest trade-off labels, and a real-time hit-test log. How I like bug reports to look.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICE ============ -->
+  <section id="practice" class="wrap">
+    <h2><span class="section-num">02</span> How I work with agents</h2>
+    <p class="section-intro">
+      Patterns that repeat across everything above — the practice behind the projects.
+    </p>
+    <div class="practice-grid">
+      <div>
+        <h3>Context engineering</h3>
+        <p>Layered CLAUDE.md / AGENTS.md constitutions per workspace and per app: one big idea up front, progressive disclosure for detail, guardrails stated as enforceable rules, and documented gotchas. A codebase an agent can be productive in is a codebase a new engineer can be productive in.</p>
+      </div>
+      <div>
+        <h3>Agent-native interfaces</h3>
+        <p>Tools designed for an agent as a first-class user: <code>--json</code> everywhere, compound commands that minimize turns, skills wrapping CLIs in natural language, and structured specs instead of freeform code generation.</p>
+      </div>
+      <div>
+        <h3>Bounded autonomy</h3>
+        <p>Autonomous sessions run inside boundaries I built and verified: sandboxed microVMs with DNS-aware egress allowlists, staged-commit data models where the AI can propose but never silently mutate, and human review gates on anything outward-facing.</p>
+      </div>
+      <div>
+        <h3>Verification loops</h3>
+        <p>Typecheck-and-test gates, 1-minute test knobs so end-to-end behavior is checkable on demand, headless auto-playtesting, and self-monitoring automations that report their own failures. If the agent can't verify it, it isn't done.</p>
+      </div>
+      <div>
+        <h3>Multi-agent orchestration</h3>
+        <p>Fan-out generation with judge panels and synthesis for design work; parallel research with adversarial verification and citations for analysis. Convergence across independent agents is signal; a single confident answer is not.</p>
+      </div>
+      <div>
+        <h3>Ship the evidence</h3>
+        <p>Every exploration ends in an artifact — a cited report, an interactive visualization, a design doc with a leaderboard, a README with a verified-behavior table. Work that can't be shown might as well not exist.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="wrap">
+    <h2><span class="section-num">03</span> Professional experience</h2>
+    <article class="job">
+      <header>
+        <h3>Software Engineer — KBR</h3>
+        <p class="job-meta">June 2022 – Present · Mission-critical internal application, dozens–hundreds of government users, 20-engineer team</p>
+      </header>
+      <ul>
+        <li>Drove team-wide adoption of automated testing best practices where no shared discipline existed; established the team's first testing playbook and own the automated UI test infrastructure end-to-end.</li>
+        <li>Built the team's first flow-analytics dashboards in Azure DevOps — WIP aging, PR aging, flow-metric estimation — giving leadership and the Product Owner delivery visibility they previously lacked.</li>
+        <li>Partner with the Product Owner on scope, prioritization, sizing, and sprint practice; introduced WIP limits and PR-aging policies that reduced stale work.</li>
+        <li>Owned major frontend surfaces end-to-end (ArcGIS Esri map rewrite, vis.js timeline design/build, team UI Style Guide) and multiple Spring Boot microservices with Kafka messaging and OpenAPI-documented REST APIs.</li>
+        <li>Mentor 1–3 engineers in recurring 1:1s on testing, refactoring, and clean architecture.</li>
+      </ul>
+    </article>
+    <div class="skills-block">
+      <h3>Toolbox</h3>
+      <p class="tags wide">
+        <span>TypeScript</span><span>JavaScript</span><span>Java</span><span>Python</span><span>Go</span><span>Kotlin</span>
+        <span>React · Redux</span><span>Spring Boot</span><span>Kafka</span><span>Docker</span><span>SQLite</span>
+        <span>ArcGIS · vis.js</span><span>Cypress · Vitest · JUnit</span><span>Azure DevOps CI/CD</span>
+        <span>Claude Code · Agent SDK patterns</span><span>MCP &amp; skill authoring</span><span>Playwright automation</span>
+      </p>
+    </div>
+    <p class="edu"><strong>B.S., Software Engineering</strong> — California State University, San Marcos (2023)</p>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="wrap contact">
+    <h2><span class="section-num">04</span> Contact</h2>
+    <p>
+      The fastest way to evaluate my work is to talk to me about it — every project above has a
+      deeper story than fits on a card, and private code is available on request.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:devmail.jacob@gmail.com">devmail.jacob@gmail.com</a>
+      <a class="btn" href="assets/Jacob_Valenzuela_Resume.pdf" download>Résumé (PDF)</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p class="wrap">© <span id="year"></span> Jacob Valenzuela · Hand-built static site, no framework, no tracker — <em>and yes, built with an agent.</em></p>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
