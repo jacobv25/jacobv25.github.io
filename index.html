@@ -103,6 +103,28 @@
 
       <article class="card">
         <header>
+          <h3>undertow — an anti-doomscrolling Android app</h3>
+          <p class="tags"><span>Kotlin · Compose</span><span>AccessibilityService</span><span>Behavior design</span><span>JUnit</span></p>
+        </header>
+        <p>
+          An <code>AccessibilityService</code> watches scroll events inside feed apps (Instagram, Facebook,
+          TikTok, YouTube) and interrupts a continuous scroll session past a configurable threshold with a
+          full-screen breathing pause — two exits: "I'm done" (counted as a win) or an ever-shrinking snooze.
+          Friction, not a hard block. The one project here that's fully public:
+          <a href="https://github.com/jacobv25/undertow">github.com/jacobv25/undertow</a>.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Behavior-first design:</strong> hard blocks get uninstalled, so every choice favors sustainable friction — snoozes shrink 60s → 30s → 15s, leaving the app on your own is logged as a win rather than an escape, and a minute of stillness resets the clock so intentional use isn't punished.</li>
+            <li><strong>Surface-level detection:</strong> regular YouTube is free; only the Shorts surface counts, detected by walking view resource ids from the scroll event's source node. The doomscroll loop is the target, not the app.</li>
+            <li><strong>Tested core, honest privacy:</strong> the session state machine is pure Kotlin under JUnit; nothing scrolled past is read — only scroll <em>events</em> and their app are counted, on-device, 30-day retention.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
           <h3>ose-vtt — a 16-path design exploration judged by an LLM panel</h3>
           <p class="tags"><span>Multi-agent orchestration</span><span>LLM-as-judge</span><span>Agent-safety architecture</span></p>
         </header>
