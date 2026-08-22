@@ -81,6 +81,28 @@
 
       <article class="card">
         <header>
+          <h3>SPEEDHELL — a browser bullet-hell, shipped through a builder/critic/referee gauntlet</h3>
+          <p class="tags"><span>Canvas2D · ES modules</span><span>Multi-agent orchestration</span><span>Headless verification</span><span>Zero dependencies</span></p>
+        </header>
+        <p>
+          A Psikyo-style vertical bullet-hell shmup in the "speed hell" lineage — fast aimed bullets,
+          speed-kill scoring — running in the browser with zero dependencies: Canvas2D, ES modules, no build
+          step. Playable now at <a href="https://jacobv25.github.io/speedhell/">jacobv25.github.io/speedhell</a>,
+          code at <a href="https://github.com/jacobv25/speedhell">github.com/jacobv25/speedhell</a>. The shipped
+          successor to the shmup-claude plan below — and 1CC'd by its author.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>The gauntlet loop:</strong> built by pitting builder agents against fresh-context <em>blind</em> critics, with disputes settled by a deterministic referee — a headless sim harness running scripted expert/passive/blind bots, plus a zero-dependency headless-Chrome screenshot harness speaking raw CDP over Node's built-in WebSocket. Design changes survive only if the critics and the numbers both hold.</li>
+            <li><strong>Engine built for verification:</strong> a deterministic 60Hz DOM-free core with object pools and seeded RNG, so the same run replays bit-for-bit under the referee's bots as in the browser.</li>
+            <li><strong>Design from primary sources:</strong> mechanics distilled from film study of CAVE / Psikyo / Blue Revolver playthroughs rather than genre folklore — the difficulty curve was tuned against what those games actually do on screen.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
           <h3>matchbook — an agent-native CLI, plus an Android sensor to feed it</h3>
           <p class="tags"><span>Go</span><span>SQLite · FTS5</span><span>Kotlin · Compose</span><span>Agent-native design</span></p>
         </header>
@@ -110,7 +132,7 @@
           An <code>AccessibilityService</code> watches scroll events inside feed apps (Instagram, Facebook,
           TikTok, YouTube) and interrupts a continuous scroll session past a configurable threshold with a
           full-screen breathing pause — two exits: "I'm done" (counted as a win) or an ever-shrinking snooze.
-          Friction, not a hard block. The one project here that's fully public:
+          Friction, not a hard block. Fully public:
           <a href="https://github.com/jacobv25/undertow">github.com/jacobv25/undertow</a>.
         </p>
         <details>
