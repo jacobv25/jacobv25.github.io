@@ -86,7 +86,7 @@
       <article class="card featured">
         <header>
           <h3>ado-flow-metrics — flow analytics for Azure DevOps teams, open-sourced with a demo mode</h3>
-          <p class="tags"><span>Node · Express</span><span>Chart.js</span><span>Monte Carlo</span><span>Delivery analytics</span><span>Open source · CI</span></p>
+          <p class="tags"><span>Node · Express</span><span>Chart.js</span><span>Monte Carlo</span><span>Vitest · Playwright</span><span>Delivery analytics</span><span>Open source · CI</span></p>
         </header>
         <p>
           The tool behind the flow-analytics story on my résumé: WIP aging, PR aging and review state,
@@ -101,7 +101,7 @@
           <ul>
             <li><strong>Built for a real team, then generalized:</strong> my 20-engineer team had boards that showed status but not age. This made aging visible, and the WIP-limit and PR-aging policies it surfaced are the ones the team adopted. The open-source version swaps the live client for a seeded fake behind the same request seam, so demo mode exercises every real route.</li>
             <li><strong>Forecasting without estimates:</strong> Monte Carlo sampling over the team's own weekly throughput gives p50/p70/p85/p95 finish dates; outlier weeks are flagged with a Tukey IQR fence (MAD fallback) and explained from the items in the bucket. Assumptions are printed on the page, not hidden.</li>
-            <li><strong>Planned before coded, tested after:</strong> each feature started as a written design doc with options and trade-offs (in the repo). Pure, dependency-free analytics modules under Node assert tests; CI runs them on two Node versions and boots demo mode against every route.</li>
+            <li><strong>Planned before coded, tested at two levels:</strong> each feature started as a written design doc with options and trade-offs (in the repo). 54 Vitest unit tests pin the analytics contracts (seeded-RNG forecasting, outlier detection, the demo fake's REST fidelity); a 24-test Playwright suite boots demo mode and drives all three pages and every API route, including regressions for two bugs found while open-sourcing. CI runs both on every push.</li>
           </ul>
         </details>
       </article>
