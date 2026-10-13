@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jacob Valenzuela — software engineer building with, and for, AI agents. Agentic systems, custom Claude Code skills, agent-native tooling, and delivery analytics.">
-  <title>Jacob Valenzuela — Software Engineer · Agentic AI</title>
+  <meta name="description" content="Jacob Valenzuela — full-stack software engineer (Java/Spring Boot, React/TypeScript) focused on automated testing and delivery analytics, who also builds software with and for AI agents.">
+  <title>Jacob Valenzuela — Software Engineer</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▲</text></svg>">
 </head>
@@ -18,6 +18,8 @@
       <a href="#practice">Practice</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
+      <a href="https://github.com/jacobv25" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/jacob-valenzuela-643191427" rel="me">LinkedIn</a>
     </div>
   </nav>
 </header>
@@ -26,33 +28,35 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero wrap">
-    <p class="kicker">Jacob Valenzuela · Software Engineer</p>
-    <h1>I build software <em>with</em> AI agents — and I build software <em>for</em> them.</h1>
+    <p class="kicker">Jacob Valenzuela · Software Engineer · Oceanside, CA · remote, or relocating for the right team</p>
+    <h1>Full-stack engineer — Java/Spring Boot and React/TypeScript — who builds software <em>with</em> AI agents, and <em>for</em> them.</h1>
     <p class="lede">
-      Four years shipping mission-critical software on a 20-engineer team, and a daily practice of
-      agentic engineering: authoring Claude&nbsp;Code skills, designing agent-native codebases and CLIs,
-      orchestrating multi-agent workflows, and running autonomous sessions in sandboxed environments.
-      This site is the evidence.
+      Four years shipping a mission-critical Spring Boot + React application on a 20-engineer team at KBR,
+      where I led the adoption of automated testing and built the team's first flow-analytics dashboards.
+      Outside work, a daily agentic-engineering practice: authoring Claude&nbsp;Code skills, designing
+      agent-native codebases and CLIs, orchestrating multi-agent workflows, and running autonomous sessions
+      in sandboxed environments. The public projects below are on
+      <a href="https://github.com/jacobv25">GitHub</a>.
     </p>
     <div class="cta-row">
       <a class="btn btn-primary" href="assets/Jacob_Valenzuela_Resume.pdf" download>Download Résumé (PDF)</a>
       <a class="btn" href="mailto:devmail.jacob@gmail.com">devmail.jacob@gmail.com</a>
     </div>
     <dl class="stat-strip" aria-label="At a glance">
+      <div><dt>4 yrs</dt><dd>shipping Java/Spring Boot + React/TypeScript<br>in mission-critical production</dd></div>
+      <div><dt>20</dt><dd>engineer team where I led adoption of<br>automated testing &amp; flow analytics</dd></div>
+      <div><dt>72</dt><dd>passing tests in <a href="https://github.com/jacobv25/mise">mise</a>, my open-source<br>React Native app</dd></div>
       <div><dt>3</dt><dd>Claude Code skills authored<br>(~1,500 lines of spec)</dd></div>
-      <div><dt>85+</dt><dd>research visualizations generated<br>by my own pipeline in 7 weeks</dd></div>
-      <div><dt>4</dt><dd>delivery channels built over one<br>tested core, agent-first monorepo</dd></div>
-      <div><dt>20</dt><dd>engineers mentored on testing<br>&amp; flow analytics at my day job</dd></div>
     </dl>
   </section>
 
   <!-- ============ PROJECTS ============ -->
   <section id="projects" class="wrap">
-    <h2><span class="section-num">01</span> Agentic AI work</h2>
+    <h2><span class="section-num">01</span> Projects</h2>
     <p class="section-intro">
-      Selected projects, most of them born in my personal workspace. The common thread: treating the
-      agent as a first-class user of the system — giving it structured output, safe boundaries,
-      verification loops, and honest documentation. Code for private projects is available on request.
+      Selected projects, most of them born in my personal workspace and most of them built with an agent
+      in the loop. The common thread: tested cores, verification loops, honest documentation, and treating
+      the agent as a first-class user of the system. Code for private projects is available on request.
     </p>
 
     <div class="cards">
@@ -75,6 +79,28 @@
             <li><strong>Skill engineering, not skill usage:</strong> progressive-disclosure reference files (patterns, theming, design directions), a neutral starter template, and shell scaffolding scripts the agent invokes — including a retention script driven by a weekly cleanup routine.</li>
             <li><strong>Production evidence:</strong> 85+ generated artifacts over 7 weeks — research reports, engineering deep-dives, architecture explainers, business analysis.</li>
             <li><strong>An engineering-evolution story:</strong> v1 scaffolded a full React + Vite app per run; I re-architected it to emit one dependency-free HTML file, because output you have to <em>host</em> is output you eventually have to clean up.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>mise — an open-source React Native cooking companion, 72 tests and counting</h3>
+          <p class="tags"><span>React Native · Expo</span><span>TypeScript strict</span><span>expo-router</span><span>Jest · RNTL</span><span>Open source</span></p>
+        </header>
+        <p>
+          A recipes app built around how cooking actually goes: a mise-en-place checklist per dish, a
+          step-by-step cook mode with inline timers, and pantry, shopping, and bar tabs. Recipes are authored
+          in markdown and compiled to JSON at build time through a pipeline with a privacy guard. Built and
+          run on-device (Pixel 9 Pro via Expo Go); code at
+          <a href="https://github.com/jacobv25/mise">github.com/jacobv25/mise</a>.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Tested from the parser up:</strong> 72 passing tests across the markdown-parser contract, components, and hooks; typecheck and lint clean. The parser contract tests are what let the recipe format evolve without breaking the cook screens.</li>
+            <li><strong>Modern RN, documented honestly:</strong> Expo SDK 57 / React Native 0.86 / React 19 with the React Compiler enabled — and a "what I learned about React Native" section in the README covering the traps that cost real time (async rendering under React 19's concurrent renderer, routing with <code>Link asChild</code>).</li>
+            <li><strong>Built with an agent, owned by me:</strong> ~20 conventional commits co-authored with Claude Code; every feature landed behind the test and typecheck gate.</li>
           </ul>
         </details>
       </article>
@@ -348,7 +374,7 @@
       <h3>Toolbox</h3>
       <p class="tags wide">
         <span>TypeScript</span><span>JavaScript</span><span>Java</span><span>Python</span><span>Go</span><span>Kotlin</span>
-        <span>React · Redux</span><span>Spring Boot</span><span>Kafka</span><span>Docker</span><span>SQLite</span>
+        <span>React · Redux</span><span>React Native · Expo</span><span>Spring Boot</span><span>Kafka</span><span>PostgreSQL · MongoDB</span><span>Docker</span><span>SQLite</span>
         <span>ArcGIS · vis.js</span><span>Cypress · Vitest · JUnit</span><span>Azure DevOps CI/CD</span>
         <span>Claude Code · Agent SDK patterns</span><span>MCP &amp; skill authoring</span><span>Playwright automation</span>
       </p>
@@ -365,6 +391,8 @@
     </p>
     <div class="cta-row">
       <a class="btn btn-primary" href="mailto:devmail.jacob@gmail.com">devmail.jacob@gmail.com</a>
+      <a class="btn" href="https://github.com/jacobv25" rel="me">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/jacob-valenzuela-643191427" rel="me">LinkedIn</a>
       <a class="btn" href="assets/Jacob_Valenzuela_Resume.pdf" download>Résumé (PDF)</a>
     </div>
   </section>

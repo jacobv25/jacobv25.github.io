@@ -147,7 +147,7 @@ details li:last-child { margin-bottom: 0; }
 .site-footer p { font-size: 0.85rem; color: var(--ink-faint); margin: 0; }
 
 @media (max-width: 40rem) {
-  .nav-links { gap: 0.75rem; }
+  .nav-links { gap: 0.75rem; flex-wrap: wrap; justify-content: flex-end; }
   .nav-links a { font-size: 0.85rem; }
   .hero { padding-block: 3.5rem 2.5rem; }
 }
