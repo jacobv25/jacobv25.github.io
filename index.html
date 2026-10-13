@@ -61,7 +61,7 @@
 
     <div class="cards">
 
-      <article class="card featured">
+      <article class="card">
         <header>
           <h3>visualize &amp; research-viz — a research-to-visualization pipeline, built as Claude Code skills</h3>
           <p class="tags"><span>Skill authoring</span><span>Prompt engineering</span><span>Bash</span><span>HTML/CSS/JS</span></p>
@@ -79,6 +79,29 @@
             <li><strong>Skill engineering, not skill usage:</strong> progressive-disclosure reference files (patterns, theming, design directions), a neutral starter template, and shell scaffolding scripts the agent invokes — including a retention script driven by a weekly cleanup routine.</li>
             <li><strong>Production evidence:</strong> 85+ generated artifacts over 7 weeks — research reports, engineering deep-dives, architecture explainers, business analysis.</li>
             <li><strong>An engineering-evolution story:</strong> v1 scaffolded a full React + Vite app per run; I re-architected it to emit one dependency-free HTML file, because output you have to <em>host</em> is output you eventually have to clean up.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card featured">
+        <header>
+          <h3>ado-flow-metrics — flow analytics for Azure DevOps teams, open-sourced with a demo mode</h3>
+          <p class="tags"><span>Node · Express</span><span>Chart.js</span><span>Monte Carlo</span><span>Delivery analytics</span><span>Open source · CI</span></p>
+        </header>
+        <p>
+          The tool behind the flow-analytics story on my résumé: WIP aging, PR aging and review state,
+          weekly throughput with outlier detection and attribution, cycle-time percentiles, and Monte Carlo
+          delivery forecasting ("20 tickets: 85% confident by Nov 9") — in one small local app where the
+          Azure DevOps token never leaves the server. <code>npm run demo</code> runs every view on synthetic
+          data with no account. Code at
+          <a href="https://github.com/jacobv25/ado-flow-metrics">github.com/jacobv25/ado-flow-metrics</a>.
+        </p>
+        <details>
+          <summary>Case study</summary>
+          <ul>
+            <li><strong>Built for a real team, then generalized:</strong> my 20-engineer team had boards that showed status but not age. This made aging visible, and the WIP-limit and PR-aging policies it surfaced are the ones the team adopted. The open-source version swaps the live client for a seeded fake behind the same request seam, so demo mode exercises every real route.</li>
+            <li><strong>Forecasting without estimates:</strong> Monte Carlo sampling over the team's own weekly throughput gives p50/p70/p85/p95 finish dates; outlier weeks are flagged with a Tukey IQR fence (MAD fallback) and explained from the items in the bucket. Assumptions are printed on the page, not hidden.</li>
+            <li><strong>Planned before coded, tested after:</strong> each feature started as a written design doc with options and trade-offs (in the repo). Pure, dependency-free analytics modules under Node assert tests; CI runs them on two Node versions and boots demo mode against every route.</li>
           </ul>
         </details>
       </article>
@@ -364,7 +387,7 @@
       </header>
       <ul>
         <li>Drove team-wide adoption of automated testing best practices where no shared discipline existed; established the team's first testing playbook and own the automated UI test infrastructure end-to-end.</li>
-        <li>Built the team's first flow-analytics dashboards in Azure DevOps — WIP aging, PR aging, flow-metric estimation — giving leadership and the Product Owner delivery visibility they previously lacked.</li>
+        <li>Built the team's first flow-analytics dashboards in Azure DevOps — WIP aging, PR aging, flow-metric estimation — giving leadership and the Product Owner delivery visibility they previously lacked. (Open-sourced as <a href="https://github.com/jacobv25/ado-flow-metrics">ado-flow-metrics</a>.)</li>
         <li>Partner with the Product Owner on scope, prioritization, sizing, and sprint practice; introduced WIP limits and PR-aging policies that reduced stale work.</li>
         <li>Owned major frontend surfaces end-to-end (ArcGIS Esri map rewrite, vis.js timeline design/build, team UI Style Guide) and multiple Spring Boot microservices with Kafka messaging and OpenAPI-documented REST APIs.</li>
         <li>Mentor 1–3 engineers in recurring 1:1s on testing, refactoring, and clean architecture.</li>
