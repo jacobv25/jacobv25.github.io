@@ -86,14 +86,14 @@
       <article class="card featured">
         <header>
           <h3>ado-flow-metrics — flow analytics for Azure DevOps teams, open-sourced with a demo mode</h3>
-          <p class="tags"><span>Node · Express</span><span>Chart.js</span><span>Monte Carlo</span><span>Vitest · Playwright</span><span>Delivery analytics</span><span>Open source · CI</span></p>
+          <p class="tags"><span>Node · Express</span><span>Chart.js</span><span>Monte Carlo</span><span>Claude API · LLM evals</span><span>Vitest · Playwright</span><span>Delivery analytics</span><span>Open source · CI</span></p>
         </header>
         <p>
           The tool behind the flow-analytics story on my résumé: WIP aging, PR aging and review state,
           weekly throughput with outlier detection and attribution, cycle-time percentiles, and Monte Carlo
           delivery forecasting ("20 tickets: 85% confident by Nov 9") — in one small local app where the
           Azure DevOps token never leaves the server. <code>npm run demo</code> runs every view on synthetic
-          data with no account. Code at
+          data with no account, and an "Explain with AI" feature backed by an eval harness. Code at
           <a href="https://github.com/jacobv25/ado-flow-metrics">github.com/jacobv25/ado-flow-metrics</a>.
         </p>
         <details>
@@ -101,6 +101,7 @@
           <ul>
             <li><strong>Built for a real team, then generalized:</strong> my 20-engineer team had boards that showed status but not age. This made aging visible, and the WIP-limit and PR-aging policies it surfaced are the ones the team adopted. The open-source version swaps the live client for a seeded fake behind the same request seam, so demo mode exercises every real route.</li>
             <li><strong>Forecasting without estimates:</strong> Monte Carlo sampling over the team's own weekly throughput gives p50/p70/p85/p95 finish dates; outlier weeks are flagged with a Tukey IQR fence (MAD fallback) and explained from the items in the bucket. Assumptions are printed on the page, not hidden.</li>
+            <li><strong>An LLM feature with an eval, not a vibe check:</strong> "Explain with AI" turns a flagged week into a schema-validated explanation from Claude (structured outputs via the Anthropic SDK). Assignee names never leave the server and ticket titles are treated as untrusted data. It ships with an eval harness: 11 golden cases including a prompt-injection attempt, 11 deterministic graders (no invented numbers, no person names, right direction, hedged, partial-week caveat) each unit-tested against a known-bad answer, and a separate-model LLM judge scoring faithfulness, actionability and tone with an 80% pass gate. CI runs it live when a key is present, offline otherwise.</li>
             <li><strong>Planned before coded, tested at two levels:</strong> each feature started as a written design doc with options and trade-offs (in the repo). 54 Vitest unit tests pin the analytics contracts (seeded-RNG forecasting, outlier detection, the demo fake's REST fidelity); a 24-test Playwright suite boots demo mode and drives all three pages and every API route, including regressions for two bugs found while open-sourcing. CI runs both on every push.</li>
           </ul>
         </details>
