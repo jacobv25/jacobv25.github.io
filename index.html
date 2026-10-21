@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jacob Valenzuela — full-stack software engineer (Java/Spring Boot, React/TypeScript) focused on automated testing and delivery analytics, who also builds software with and for AI agents.">
+  <meta name="description" content="Jacob Valenzuela — full-stack engineer (React/TypeScript, Java/Spring Boot) who makes delivery measurable: flow metrics, test infrastructure, and AI features that ship with evals. Open to mid-level remote roles.">
   <title>Jacob Valenzuela — Software Engineer</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>▲</text></svg>">
@@ -28,25 +28,23 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero wrap">
-    <p class="kicker">Jacob Valenzuela · Software Engineer · Oceanside, CA · remote, or relocating for the right team</p>
-    <h1>Full-stack engineer — Java/Spring Boot and React/TypeScript — who builds software <em>with</em> AI agents, and <em>for</em> them.</h1>
+    <p class="kicker">Jacob Valenzuela · Oceanside, CA · open to mid-level full-stack roles, remote or relocating</p>
+    <h1>Full-stack engineer (React/TypeScript, Java/Spring Boot) who makes delivery <em>measurable</em>: flow metrics, test infrastructure, and AI features that ship with evals.</h1>
     <p class="lede">
-      Four years shipping a mission-critical Spring Boot + React application on a 20-engineer team at KBR,
-      where I led the adoption of automated testing and built the team's first flow-analytics dashboards.
-      Outside work, a daily agentic-engineering practice: authoring Claude&nbsp;Code skills, designing
-      agent-native codebases and CLIs, orchestrating multi-agent workflows, and running autonomous sessions
-      in sandboxed environments. The public projects below are on
-      <a href="https://github.com/jacobv25">GitHub</a>.
+      Four years on a 20-engineer Spring Boot + React team at KBR, where I wrote the team's first testing
+      playbook and built the WIP and PR-aging dashboards that became team policy. I build with AI agents
+      every day, and I ship the tests, CI, and evals that prove the work holds up.
     </p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="assets/Jacob_Valenzuela_Resume.pdf" download>Download Résumé (PDF)</a>
+      <a class="btn btn-primary" href="https://jacobv25.github.io/ado-flow-metrics/">Try the live demo</a>
+      <a class="btn" href="assets/Jacob_Valenzuela_Resume.pdf" download>Download Résumé (PDF)</a>
       <a class="btn" href="mailto:devmail.jacob@gmail.com">devmail.jacob@gmail.com</a>
     </div>
     <dl class="stat-strip" aria-label="At a glance">
-      <div><dt>4 yrs</dt><dd>shipping Java/Spring Boot + React/TypeScript<br>in mission-critical production</dd></div>
+      <div><dt>4 yrs</dt><dd>shipping Java/Spring Boot + React/TypeScript<br>in production at KBR</dd></div>
       <div><dt>20</dt><dd>engineer team where I led adoption of<br>automated testing &amp; flow analytics</dd></div>
-      <div><dt>72</dt><dd>passing tests in <a href="https://github.com/jacobv25/mise">mise</a>, my open-source<br>React Native app</dd></div>
-      <div><dt>3</dt><dd>Claude Code skills authored<br>(~1,500 lines of spec)</dd></div>
+      <div><dt>144</dt><dd>tests plus a live LLM eval in <a href="https://github.com/jacobv25/ado-flow-metrics">ado-flow-metrics</a>,<br>all run in CI</dd></div>
+      <div><dt>21×</dt><dd>fastest query speedup in <a href="https://github.com/jacobv25/pg-tuning-lab">pg-tuning-lab</a>,<br>measured with EXPLAIN ANALYZE on 2M rows</dd></div>
     </dl>
   </section>
 
@@ -54,306 +52,145 @@
   <section id="projects" class="wrap">
     <h2><span class="section-num">01</span> Projects</h2>
     <p class="section-intro">
-      Selected projects, most of them born in my personal workspace and most of them built with an agent
-      in the loop. The common thread: tested cores, verification loops, honest documentation, and treating
-      the agent as a first-class user of the system. Code for private projects is available on request.
+      Five public repositories, each with tests and honest documentation. The flagship has a hosted demo,
+      so you can see it work before you read a line of code.
     </p>
 
     <div class="cards">
 
-      <article class="card">
+      <article class="card featured" id="ado-flow-metrics">
         <header>
-          <h3>visualize &amp; research-viz — a research-to-visualization pipeline, built as Claude Code skills</h3>
-          <p class="tags"><span>Skill authoring</span><span>Prompt engineering</span><span>Bash</span><span>HTML/CSS/JS</span></p>
+          <h3>ado-flow-metrics — flow analytics for Azure DevOps teams, with an AI feature and the eval that keeps it honest</h3>
+          <p class="tags"><span>Node · Express</span><span>Chart.js</span><span>Monte Carlo</span><span>Claude API · LLM evals</span><span>Vitest · Playwright</span><span>GitHub Actions</span></p>
         </header>
-        <p>
-          A pair of custom skills I wrote that turn any substantial research answer into a self-contained,
-          interactive single-file HTML page — all CSS/JS/SVG inlined, no build step, renders offline.
-          <strong>research-viz</strong> chains a deep-research protocol (fan-out web searches, primary-source
-          fetches, adversarial verification, numbered citations) into <strong>visualize</strong>, which must
-          derive a fresh visual identity per topic: a design constraint baked into the skill so no two pages look alike.
-        </p>
-        <details>
-          <summary>Case study</summary>
-          <ul>
-            <li><strong>Skill engineering, not skill usage:</strong> progressive-disclosure reference files (patterns, theming, design directions), a neutral starter template, and shell scaffolding scripts the agent invokes — including a retention script driven by a weekly cleanup routine.</li>
-            <li><strong>Production evidence:</strong> 85+ generated artifacts over 7 weeks — research reports, engineering deep-dives, architecture explainers, business analysis.</li>
-            <li><strong>An engineering-evolution story:</strong> v1 scaffolded a full React + Vite app per run; I re-architected it to emit one dependency-free HTML file, because output you have to <em>host</em> is output you eventually have to clean up.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="card featured">
-        <header>
-          <h3>ado-flow-metrics — flow analytics for Azure DevOps teams, open-sourced with a demo mode</h3>
-          <p class="tags"><span>Node · Express</span><span>Chart.js</span><span>Monte Carlo</span><span>Claude API · LLM evals</span><span>Vitest · Playwright</span><span>Delivery analytics</span><span>Open source · CI</span></p>
-        </header>
+        <a class="shot" href="https://jacobv25.github.io/ado-flow-metrics/forecast.html">
+          <img src="assets/ado-flow-metrics-forecast.png" width="1440" height="1100" loading="lazy"
+               alt="The Forecast page: weekly throughput bars with an IQR band, three flagged outlier weeks, and a Monte Carlo delivery forecast.">
+        </a>
         <p>
           The tool behind the flow-analytics story on my résumé: WIP aging, PR aging and review state,
-          weekly throughput with outlier detection and attribution, cycle-time percentiles, and Monte Carlo
-          delivery forecasting ("20 tickets: 85% confident by Nov 9") — in one small local app where the
-          Azure DevOps token never leaves the server. <code>npm run demo</code> runs every view on synthetic
-          data with no account, and an "Explain with AI" feature backed by an eval harness. Code at
-          <a href="https://github.com/jacobv25/ado-flow-metrics">github.com/jacobv25/ado-flow-metrics</a>.
+          weekly throughput with outlier detection, cycle-time percentiles, and Monte Carlo delivery
+          forecasting ("20 tickets: 85% confident by Nov 9"). Every flagged week has an "Explain with AI"
+          button backed by Claude, and the explanation feature ships with its own eval harness.
+          <strong><a href="https://jacobv25.github.io/ado-flow-metrics/">Live demo</a></strong> (no install, synthetic team data) ·
+          <a href="https://github.com/jacobv25/ado-flow-metrics">source</a>.
         </p>
         <details>
           <summary>Case study</summary>
           <ul>
             <li><strong>Built for a real team, then generalized:</strong> my 20-engineer team had boards that showed status but not age. This made aging visible, and the WIP-limit and PR-aging policies it surfaced are the ones the team adopted. The open-source version swaps the live client for a seeded fake behind the same request seam, so demo mode exercises every real route.</li>
             <li><strong>Forecasting without estimates:</strong> Monte Carlo sampling over the team's own weekly throughput gives p50/p70/p85/p95 finish dates; outlier weeks are flagged with a Tukey IQR fence (MAD fallback) and explained from the items in the bucket. Assumptions are printed on the page, not hidden.</li>
-            <li><strong>An LLM feature with an eval, not a vibe check:</strong> "Explain with AI" turns a flagged week into a schema-validated explanation from Claude (structured outputs via the Anthropic SDK). Assignee names never leave the server and ticket titles are treated as untrusted data. It ships with an eval harness: 11 golden cases including a prompt-injection attempt, 11 deterministic graders (no invented numbers, no person names, right direction, hedged, partial-week caveat) each unit-tested against a known-bad answer, and a separate-model LLM judge scoring faithfulness, actionability and tone with an 80% pass gate. CI runs it live when a key is present, offline otherwise.</li>
-            <li><strong>Planned before coded, tested at two levels:</strong> each feature started as a written design doc with options and trade-offs (in the repo). 54 Vitest unit tests pin the analytics contracts (seeded-RNG forecasting, outlier detection, the demo fake's REST fidelity); a 24-test Playwright suite boots demo mode and drives all three pages and every API route, including regressions for two bugs found while open-sourcing. CI runs both on every push.</li>
+            <li><strong>An LLM feature with an eval, not a vibe check:</strong> "Explain with AI" turns a flagged week into a schema-validated explanation (structured outputs via the Anthropic SDK). Assignee names never leave the server and ticket titles are treated as untrusted data. The eval has 11 golden cases including a prompt-injection attempt, 11 deterministic graders each unit-tested against a known-bad answer, and a separate-model LLM judge with an 80% pass gate. I also measured Opus against Sonnet on it and kept Opus because the numbers said so, not the price list.</li>
+            <li><strong>Token spend treated as an engineering constraint:</strong> a per-payload server cache, prompt caching on the system prompt (measured, not assumed), an output cap, and CI that only runs the paid eval when a file that can change the model's output changed.</li>
+            <li><strong>Tested at two levels, deployed by CI:</strong> 110 Vitest unit tests pin the analytics contracts; a 34-test Playwright suite boots demo mode and drives all three pages, every API route, and the static export that produces the hosted demo. GitHub Actions runs both on every push and rebuilds the demo weekly.</li>
           </ul>
         </details>
       </article>
 
       <article class="card">
         <header>
-          <h3>mise — an open-source React Native cooking companion, 72 tests and counting</h3>
-          <p class="tags"><span>React Native · Expo</span><span>TypeScript strict</span><span>expo-router</span><span>Jest · RNTL</span><span>Open source</span></p>
+          <h3>mise — an open-source React Native cooking companion, 72 tests, typecheck and lint in CI</h3>
+          <p class="tags"><span>React Native · Expo</span><span>TypeScript strict</span><span>expo-router</span><span>Jest · RNTL</span><span>GitHub Actions</span></p>
         </header>
         <p>
           A recipes app built around how cooking actually goes: a mise-en-place checklist per dish, a
           step-by-step cook mode with inline timers, and pantry, shopping, and bar tabs. Recipes are authored
           in markdown and compiled to JSON at build time through a pipeline with a privacy guard. Built and
-          run on-device (Pixel 9 Pro via Expo Go); code at
-          <a href="https://github.com/jacobv25/mise">github.com/jacobv25/mise</a>.
+          run on-device via Expo Go. <a href="https://github.com/jacobv25/mise">Source</a>.
         </p>
         <details>
           <summary>Case study</summary>
           <ul>
-            <li><strong>Tested from the parser up:</strong> 72 passing tests across the markdown-parser contract, components, and hooks; typecheck and lint clean. The parser contract tests are what let the recipe format evolve without breaking the cook screens.</li>
-            <li><strong>Modern RN, documented honestly:</strong> Expo SDK 57 / React Native 0.86 / React 19 with the React Compiler enabled — and a "what I learned about React Native" section in the README covering the traps that cost real time (async rendering under React 19's concurrent renderer, routing with <code>Link asChild</code>).</li>
-            <li><strong>Built with an agent, owned by me:</strong> ~20 conventional commits co-authored with Claude Code; every feature landed behind the test and typecheck gate.</li>
+            <li><strong>Tested from the parser up:</strong> 72 passing tests across the markdown-parser contract, components, and hooks; typecheck and lint clean, enforced by CI on every push. The parser contract tests are what let the recipe format evolve without breaking the cook screens.</li>
+            <li><strong>Modern React Native, documented honestly:</strong> Expo SDK 57 / React Native 0.86 / React 19 with the React Compiler enabled, and a "what I learned" section in the README covering the traps that cost real time (async rendering under React 19's concurrent renderer, routing with <code>Link asChild</code>).</li>
+            <li><strong>Built with an agent, owned by me:</strong> conventional commits co-authored with Claude Code; every feature landed behind the test and typecheck gate.</li>
           </ul>
         </details>
       </article>
 
       <article class="card">
         <header>
-          <h3>SPEEDHELL — a browser bullet-hell, shipped through a builder/critic/referee gauntlet</h3>
-          <p class="tags"><span>Canvas2D · ES modules</span><span>Multi-agent orchestration</span><span>Headless verification</span><span>Zero dependencies</span></p>
+          <h3>pg-tuning-lab — PostgreSQL query tuning on 2M rows, every change measured before and after</h3>
+          <p class="tags"><span>PostgreSQL 16</span><span>EXPLAIN (ANALYZE, BUFFERS)</span><span>Schema design</span><span>Docker</span></p>
         </header>
         <p>
-          A Psikyo-style vertical bullet-hell shmup in the "speed hell" lineage — fast aimed bullets,
-          speed-kill scoring — running in the browser with zero dependencies: Canvas2D, ES modules, no build
-          step. Playable now at <a href="https://jacobv25.github.io/speedhell/">jacobv25.github.io/speedhell</a>,
-          code at <a href="https://github.com/jacobv25/speedhell">github.com/jacobv25/speedhell</a>. The shipped
-          successor to the shmup-claude plan below — and 1CC'd by its author.
+          A schema-design and query-tuning lab on an auto-repair-shop schema I know from years as a service
+          writer: 500k work orders, 2M line items, seven realistic queries. Each one gets a baseline, a change
+          (partial index, composite index with INCLUDE, materialized view, or a query rewrite), and a measured
+          result with the noise band stated. Speedups range from 1.3× (within noise, and recorded as such) to
+          21×. <a href="https://github.com/jacobv25/pg-tuning-lab">Source and results</a>.
+        </p>
+        <details>
+          <summary>Why it exists</summary>
+          <ul>
+            <li><strong>Closing a gap on purpose:</strong> four years of Spring Boot services on PostgreSQL meant plenty of schema changes but little time sitting with query plans. Postings ask for "schema design and query optimization", so this is me doing exactly that in the open, with the plans and the misses written down.</li>
+            <li><strong>Honest numbers:</strong> p50 of seven warm runs, one rewrite that was slower than the original kept in the results, and a materialized-view design that keeps the current month live.</li>
+          </ul>
+        </details>
+      </article>
+
+      <article class="card">
+        <header>
+          <h3>SPEEDHELL — a browser bullet-hell game with a deterministic core and a headless referee</h3>
+          <p class="tags"><span>Canvas2D · ES modules</span><span>Deterministic sim</span><span>Headless verification</span><span>Zero dependencies</span></p>
+        </header>
+        <p>
+          A Psikyo-style vertical shmup running in the browser with zero dependencies: Canvas2D, ES modules, no
+          build step. The engine is a DOM-free 60 Hz core with seeded RNG and object pools, so a headless sim
+          can replay runs with scripted bots and gate design changes on the numbers.
+          <strong><a href="https://jacobv25.github.io/speedhell/">Play it</a></strong> ·
+          <a href="https://github.com/jacobv25/speedhell">source</a>.
         </p>
         <details>
           <summary>Case study</summary>
           <ul>
-            <li><strong>The gauntlet loop:</strong> built by pitting builder agents against fresh-context <em>blind</em> critics, with disputes settled by a deterministic referee — a headless sim harness running scripted expert/passive/blind bots, plus a zero-dependency headless-Chrome screenshot harness speaking raw CDP over Node's built-in WebSocket. Design changes survive only if the critics and the numbers both hold.</li>
-            <li><strong>Engine built for verification:</strong> a deterministic 60Hz DOM-free core with object pools and seeded RNG, so the same run replays bit-for-bit under the referee's bots as in the browser.</li>
-            <li><strong>Design from primary sources:</strong> mechanics distilled from film study of CAVE / Psikyo / Blue Revolver playthroughs rather than genre folklore — the difficulty curve was tuned against what those games actually do on screen.</li>
+            <li><strong>The gauntlet loop:</strong> built by pitting builder agents against fresh-context critics, with disputes settled by a deterministic referee: a sim harness running expert, passive, and blind bots, plus a zero-dependency headless-Chrome screenshot check over raw CDP. Design changes survive only if the critics and the numbers both hold.</li>
+            <li><strong>Design from primary sources:</strong> mechanics distilled from film study of CAVE and Psikyo playthroughs rather than genre folklore; the difficulty curve was tuned against what those games actually do on screen.</li>
           </ul>
         </details>
       </article>
 
       <article class="card">
         <header>
-          <h3>matchbook — an agent-native CLI, plus an Android sensor to feed it</h3>
-          <p class="tags"><span>Go</span><span>SQLite · FTS5</span><span>Kotlin · Compose</span><span>Agent-native design</span></p>
+          <h3>undertow — an anti-doomscrolling Android app with a tested state machine</h3>
+          <p class="tags"><span>Kotlin · Compose</span><span>AccessibilityService</span><span>JUnit</span><span>GitHub Actions</span></p>
         </header>
         <p>
-          A Go CLI (~2.2k lines, cobra + SQLite full-text search) that mirrors a messaging-app data export into a local
-          database and exposes compound, token-efficient commands (<code>needs-reply</code>, <code>stalled</code>,
-          <code>stats</code>) with <code>--json</code> on every read — wrapped in a SKILL.md so an agent can drive it
-          in natural language. A companion Android app uses a <code>NotificationListenerService</code> to stream
-          fresh message events to the CLI's ingest server, solving "the official export takes days."
+          An <code>AccessibilityService</code> watches scroll events inside feed apps and interrupts a continuous
+          scroll session past a configurable threshold with a full-screen breathing pause. Friction, not a hard
+          block: hard blocks get uninstalled. <a href="https://github.com/jacobv25/undertow">Source</a>, MIT, CI, signed releases.
         </p>
         <details>
           <summary>Case study</summary>
           <ul>
-            <li><strong>Judgment over capability:</strong> the obvious route was reverse-engineering a private API — a ToS violation. Instead the tool mirrors a proven architecture against the official on-disk export, and the Android sensor only reads notifications the OS already delivered to my own device.</li>
-            <li><strong>Agent-native by design:</strong> compound commands minimize agent turns; JSON output eliminates parsing guesswork; AI-assisted commands (<code>summarize</code>, <code>suggest</code>) are gated behind explicit flags and produce drafts for human review, never auto-replies.</li>
-            <li><strong>Tested:</strong> <code>go test</code> coverage on the export parser and store, including full-text search and idempotent re-ingest; all format assumptions isolated to one package.</li>
+            <li><strong>Behavior-first design:</strong> snoozes shrink 60s → 30s → 15s, leaving the app on your own is logged as a win, and a minute of stillness resets the clock so intentional use isn't punished. Only YouTube's Shorts surface counts, detected by walking view ids from the scroll event's source node.</li>
+            <li><strong>Tested core, honest privacy:</strong> the session state machine is pure Kotlin under JUnit; nothing scrolled past is read. Only scroll events and their app are counted, on-device, 30-day retention.</li>
           </ul>
         </details>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>undertow — an anti-doomscrolling Android app</h3>
-          <p class="tags"><span>Kotlin · Compose</span><span>AccessibilityService</span><span>Behavior design</span><span>JUnit</span></p>
-        </header>
-        <p>
-          An <code>AccessibilityService</code> watches scroll events inside feed apps (Instagram, Facebook,
-          TikTok, YouTube) and interrupts a continuous scroll session past a configurable threshold with a
-          full-screen breathing pause — two exits: "I'm done" (counted as a win) or an ever-shrinking snooze.
-          Friction, not a hard block. Fully public:
-          <a href="https://github.com/jacobv25/undertow">github.com/jacobv25/undertow</a>.
-        </p>
-        <details>
-          <summary>Case study</summary>
-          <ul>
-            <li><strong>Behavior-first design:</strong> hard blocks get uninstalled, so every choice favors sustainable friction — snoozes shrink 60s → 30s → 15s, leaving the app on your own is logged as a win rather than an escape, and a minute of stillness resets the clock so intentional use isn't punished.</li>
-            <li><strong>Surface-level detection:</strong> regular YouTube is free; only the Shorts surface counts, detected by walking view resource ids from the scroll event's source node. The doomscroll loop is the target, not the app.</li>
-            <li><strong>Tested core, honest privacy:</strong> the session state machine is pure Kotlin under JUnit; nothing scrolled past is read — only scroll <em>events</em> and their app are counted, on-device, 30-day retention.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>ose-vtt — a 16-path design exploration judged by an LLM panel</h3>
-          <p class="tags"><span>Multi-agent orchestration</span><span>LLM-as-judge</span><span>Agent-safety architecture</span></p>
-        </header>
-        <p>
-          Before writing any code for an AI-assisted virtual tabletop, I ran the design space through a
-          multi-agent process: 16 candidate designs generated across a 4×4 matrix (AI ambition × human authority),
-          each scored by three distinct judge personas (domain purist, software architect, product/UX), then
-          leaderboarded and synthesized — using <em>convergence across independent paths</em> as the signal.
-        </p>
-        <details>
-          <summary>Case study</summary>
-          <ul>
-            <li><strong>Safety as data model:</strong> the winning architecture makes the AI <em>structurally</em> incapable of touching shared state — every agent action is a staged command requiring human commit, with no canonical setter exposed to the agent layer.</li>
-            <li><strong>"The LLM never produces a number":</strong> all dice, math, and rules resolution live in a deterministic engine; the agent narrates and proposes. Every result carries a provenance object (dice, seed, formula, rule cited).</li>
-            <li><strong>Output:</strong> a full design report with MVP scope, trade-offs, and a "validate first" list — the kind of artifact I'd want before funding a build.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>bella-workspace — designing a codebase <em>for</em> agents</h3>
-          <p class="tags"><span>TypeScript</span><span>npm workspaces</span><span>Hono · node:sqlite</span><span>Vitest</span><span>Context engineering</span></p>
-        </header>
-        <p>
-          A medication-reminder system deliberately built <strong>four ways</strong> — ntfy push, Web Push PWA,
-          email, and a calendar feed — over one shared, tested domain core, so the channels run side by side and
-          the winner is kept. Every app is the same shape (config / pure-function scheduler / Hono server), and
-          the whole monorepo is documented in layered CLAUDE.md files written for an agent to be productive in one read.
-        </p>
-        <details>
-          <summary>Case study</summary>
-          <ul>
-            <li><strong>Context engineering as a discipline:</strong> root + per-app agent docs, an explicit "the duplication is the point — don't consolidate" guardrail, and conventions stated as typecheck-enforced rules an agent must match.</li>
-            <li><strong>Verification designed in:</strong> a documented 1-minute test knob so a reminder can be verified end-to-end without waiting for 8:00 PM, ready-to-run <code>curl</code>/<code>sqlite3</code> check commands, and a gotchas section for the traps I actually hit.</li>
-            <li><strong>Quality gate:</strong> work is gated on <code>npm run typecheck &amp;&amp; npm test</code> (22 passing tests), strict TS with no build step.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>Sandboxed autonomy — running a permissionless agent safely</h3>
-          <p class="tags"><span>Apple container</span><span>Docker</span><span>iptables · ipset · dnsmasq</span><span>Infra</span></p>
-        </header>
-        <p>
-          To run Claude Code fully autonomously (no permission prompts) without giving it my machine, I built a
-          sandbox: an isolated Linux microVM via Apple's <code>container</code> on Apple Silicon, with the project
-          bind-mounted read-write and everything else walled off behind a network egress allowlist.
-        </p>
-        <details>
-          <summary>Case study</summary>
-          <ul>
-            <li><strong>The interesting problem:</strong> a naive IP allowlist fails for CDN-fronted domains. My firewall runs dnsmasq locally — when the agent resolves an allowed domain, the freshly-resolved IP is added to an ipset that iptables permits. Robust to IP rotation, no broad CIDR grants. IPv6 is dropped and AAAA records stripped so nothing bypasses the IPv4 allowlist.</li>
-            <li><strong>Verified, not vibes:</strong> the README documents tested behavior — allowed domains reachable; example.com, google.com, and raw IPs blocked — plus honest caveats (required capabilities, fail-closed behavior, version compatibility).</li>
-            <li><strong>Why it matters:</strong> autonomous agents are only as trustworthy as the boundary you run them inside. I built the boundary.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>pno-check — an autonomous checker that hands work back to the agent</h3>
-          <p class="tags"><span>Node</span><span>Playwright</span><span>launchd</span><span>Automation</span></p>
-        </header>
-        <p>
-          A daily launchd job that drives headless Chrome through a government web portal to check whether a
-          filing window has opened, clicking through interstitial prompts and classifying the outcome. On
-          eligibility it sends a phone push whose message is literally "Open Claude Code and say 'file it'" —
-          the automation exists to hand a task back to an agent at exactly the right moment.
-        </p>
-        <details>
-          <summary>Case study</summary>
-          <ul>
-            <li><strong>Self-monitoring:</strong> three consecutive failures trigger a "the daily check is failing — ask Claude to debug" notification pointing at its own directory.</li>
-            <li><strong>Self-terminating:</strong> success touches a sentinel file so it never fires twice, and the header comment documents its own teardown. Automation with a lifecycle, not a zombie cron job.</li>
-            <li><strong>Defensive scraping:</strong> reasons about rendered-vs-hidden DOM text to avoid false positives, and polls frames to find the embedded workflow iframe rather than assuming page structure.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>shmup-claude — research-grounded agentic UX (build plan)</h3>
-          <p class="tags"><span>Agentic UX research</span><span>Spec-mediated editing</span><span>Lua · LÖVE</span></p>
-        </header>
-        <p>
-          A design for a tool where you <em>describe</em> bullet-hell game patterns in natural language and watch
-          them appear on a live canvas. Seven core UX principles, each traced to a cited 2024–2026 HCI research
-          paper. The agent never generates engine code — it emits schema-validated patches against an
-          id-addressable spec, previewed as ghost renders with difficulty estimates before a human commits them.
-          A headless auto-playtester estimates dodge-ability so "make it more readable" gets a measurable answer.
-        </p>
-        <details>
-          <summary>Status</summary>
-          <ul>
-            <li>Archived after Milestone 1 (a partial Lua/LÖVE engine with seeded RNG, bullet, and pattern systems). The plan document is the artifact: it's my clearest statement of how humans should stay in control of generative tools — propose → preview → accept, never silent mutation.</li>
-          </ul>
-        </details>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>mark-msx — a corpus-to-skill pipeline</h3>
-          <p class="tags"><span>Skill authoring</span><span>Corpus distillation</span><span>Persona design</span></p>
-        </header>
-        <p>
-          I distilled ~136k words of transcripts from a game-design critic into a Claude Code skill with three
-          modes — critique in-voice, score against a neutral rubric, or apply the philosophy as design guidance —
-          with the doctrine, voice, and scorecard factored into separate reference files loaded on demand.
-          Includes an anti-bluffing rule: if the agent lacks firsthand knowledge of the subject, it must say so.
-        </p>
-      </article>
-
-      <article class="card">
-        <header>
-          <h3>AI-integration consulting — an agent-native business operation</h3>
-          <p class="tags"><span>Consulting</span><span>Custom skills &amp; subagents</span><span>Ops design</span></p>
-        </header>
-        <p>
-          An emerging consulting practice helping local small businesses (home-services trades, auto repair)
-          adopt AI — mostly by wiring up tools they already own. The operation itself is run as an agent-native
-          workspace: a thin operating constitution, custom skills for readiness assessments, subagents for
-          industry research, templated engagement pipelines, and hard confidentiality walls keeping client and
-          financial material out of anything an agent could leak into a repo.
-        </p>
       </article>
 
     </div>
 
-    <h3 class="subhead">Also in the workshop</h3>
-    <div class="cards minor">
-      <article class="card">
-        <h4>map-timeline-workspace</h4>
-        <p>A synced ArcGIS map ⇄ vis-timeline reference app at 10k–50k events through one Redux store, with a perf HUD and toggles that turn each best practice <em>off</em> so you can watch the cost appear. Cypress e2e + FPS/latency perf specs.</p>
-      </article>
-      <article class="card">
-        <h4>granularity-planner</h4>
-        <p>A space-time planner whose UI re-represents itself based on the temporal granularity you're working at — snap, map rendering, and editors all morph as you zoom from week to minute. Granularity is derived from the visible window, never a mode.</p>
-      </article>
-      <article class="card">
-        <h4>vis-timeline-sandbox</h4>
-        <p>One open-source bug (an invisible drag strip swallowing clicks), nine live-toggleable fixes with honest trade-off labels, and a real-time hit-test log. How I like bug reports to look.</p>
-      </article>
-    </div>
+    <h3 class="subhead">Private work, code on request</h3>
+    <ul class="private-list">
+      <li><strong>Sandboxed autonomy</strong> — a Linux microVM (Apple <code>container</code>) for running Claude Code without permission prompts: project bind-mounted, everything else behind a DNS-aware egress allowlist (dnsmasq feeds resolved IPs into an ipset that iptables permits, so CDN rotation doesn't break it).</li>
+        <li><strong>matchbook</strong> — a Go CLI (cobra, SQLite FTS5) that mirrors a messaging export into a local database with compound, <code>--json</code> commands designed for an agent to drive, plus an Android notification listener to keep it fresh. Built against the official export rather than a private API.</li>
+      <li><strong>bella-workspace</strong> — a medication-reminder system built four ways (push, Web Push PWA, email, calendar feed) over one tested TypeScript core, with layered agent docs; 22 tests behind a typecheck gate.</li>
+      <li><strong>map-timeline-workspace</strong> — a synced ArcGIS map and vis-timeline reference app at 10k–50k events through one Redux store, with a perf HUD and Cypress perf specs. Mirrors the map and timeline work I own at KBR.</li>
+      <li><strong>visualize / research-viz</strong> — a pair of Claude Code skills that turn a research answer into a self-contained interactive HTML page, with a deep-research protocol (fan-out search, adversarial verification, citations) in front of it.</li>
+    </ul>
   </section>
 
   <!-- ============ PRACTICE ============ -->
   <section id="practice" class="wrap">
     <h2><span class="section-num">02</span> How I work with agents</h2>
     <p class="section-intro">
-      Patterns that repeat across everything above — the practice behind the projects.
+      The habits behind the projects above. Most of them are just good engineering with an extra user in the loop.
     </p>
     <div class="practice-grid">
       <div>
         <h3>Context engineering</h3>
-        <p>Layered CLAUDE.md / AGENTS.md constitutions per workspace and per app: one big idea up front, progressive disclosure for detail, guardrails stated as enforceable rules, and documented gotchas. A codebase an agent can be productive in is a codebase a new engineer can be productive in.</p>
+        <p>Layered CLAUDE.md docs per workspace and per app: one big idea up front, detail on demand, guardrails stated as rules the typechecker or tests enforce, and the gotchas written down. A codebase an agent can be productive in is a codebase a new engineer can be productive in.</p>
       </div>
       <div>
         <h3>Agent-native interfaces</h3>
@@ -361,11 +198,11 @@
       </div>
       <div>
         <h3>Bounded autonomy</h3>
-        <p>Autonomous sessions run inside boundaries I built and verified: sandboxed microVMs with DNS-aware egress allowlists, staged-commit data models where the AI can propose but never silently mutate, and human review gates on anything outward-facing.</p>
+        <p>Autonomous sessions run inside boundaries I built and verified: a sandboxed microVM with a DNS-aware egress allowlist, data models where the AI can propose but never silently mutate, and a human review gate on anything outward-facing.</p>
       </div>
       <div>
         <h3>Verification loops</h3>
-        <p>Typecheck-and-test gates, 1-minute test knobs so end-to-end behavior is checkable on demand, headless auto-playtesting, and self-monitoring automations that report their own failures. If the agent can't verify it, it isn't done.</p>
+        <p>Typecheck-and-test gates, an eval for the LLM feature, headless replay for the game, and CI that runs all of it on every push. If the agent can't verify it, it isn't done.</p>
       </div>
       <div>
         <h3>Multi-agent orchestration</h3>
@@ -384,7 +221,7 @@
     <article class="job">
       <header>
         <h3>Software Engineer — KBR</h3>
-        <p class="job-meta">June 2022 – Present · Mission-critical internal application, dozens–hundreds of government users, 20-engineer team</p>
+        <p class="job-meta">June 2022 – Present · Internal application for government users · 20-engineer team · Spring Boot, Kafka, React, ArcGIS</p>
       </header>
       <ul>
         <li>Drove team-wide adoption of automated testing best practices where no shared discipline existed; established the team's first testing playbook and own the automated UI test infrastructure end-to-end.</li>
@@ -410,8 +247,8 @@
   <section id="contact" class="wrap contact">
     <h2><span class="section-num">04</span> Contact</h2>
     <p>
-      The fastest way to evaluate my work is to talk to me about it — every project above has a
-      deeper story than fits on a card, and private code is available on request.
+      The fastest way to evaluate my work is the <a href="https://jacobv25.github.io/ado-flow-metrics/">live demo</a>;
+      the second fastest is a conversation. Private code is available on request.
     </p>
     <div class="cta-row">
       <a class="btn btn-primary" href="mailto:devmail.jacob@gmail.com">devmail.jacob@gmail.com</a>

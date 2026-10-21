@@ -4,7 +4,7 @@
   --bg-raised: #ffffff;
   --ink: #1c1e21;
   --ink-soft: #4b5259;
-  --ink-faint: #8a9199;
+  --ink-faint: #6b7177;   /* 4.7:1 on --bg (WCAG AA) */
   --line: #e3e0d8;
   --accent: #0e7490;
   --accent-ink: #0b5c73;
@@ -18,12 +18,13 @@
     --bg-raised: #1d2024;
     --ink: #e8e6e1;
     --ink-soft: #b3b0a9;
-    --ink-faint: #7d7a74;
+    --ink-faint: #9a968f;   /* 6.1:1 on dark --bg */
     --line: #2c3036;
     --accent: #4fb3cf;
     --accent-ink: #7accdf;
     --accent-soft: #12333c;
   }
+  .btn-primary { color: var(--bg); }   /* white on the light accent was 2.4:1 */
 }
 
 /* ---------- base ---------- */
@@ -101,6 +102,11 @@ h2 { font-size: 1.7rem; margin: 0 0 0.75rem; }
   border-radius: 12px; padding: 1.5rem 1.6rem;
 }
 .card.featured { border-color: var(--accent); border-width: 1.5px; }
+.card .shot { display: block; margin: 0.9rem 0 0.25rem; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg); }
+.card .shot img { display: block; width: 100%; height: auto; max-height: 24rem; object-fit: cover; object-position: top; }
+.card .shot:hover { border-color: var(--accent); }
+.private-list { margin: 0; padding-left: 1.2rem; color: var(--ink-soft); font-size: 0.95rem; }
+.private-list li { margin-bottom: 0.6rem; }
 .card h3 { font-size: 1.15rem; margin: 0 0 0.6rem; }
 .card h4 { font-size: 1rem; margin: 0 0 0.5rem; }
 .card p { margin: 0.6rem 0 0; color: var(--ink-soft); font-size: 0.98rem; }
@@ -108,7 +114,7 @@ h2 { font-size: 1.7rem; margin: 0 0 0.75rem; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; }
 .tags span {
-  font-family: var(--mono); font-size: 0.72rem; color: var(--accent-ink);
+  font-family: var(--mono); font-size: 0.8rem; color: var(--accent-ink);
   background: var(--accent-soft); border-radius: 99px; padding: 0.15rem 0.6rem;
 }
 .tags.wide span { font-size: 0.8rem; padding: 0.25rem 0.7rem; }
